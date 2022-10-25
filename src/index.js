@@ -1,7 +1,5 @@
-import _ from 'lodash';
 import './style.css';
 import image from './assets/logo.png';
-
 
 const header = document.querySelector('.header');
 
