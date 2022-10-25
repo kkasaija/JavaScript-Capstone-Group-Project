@@ -1,5 +1,6 @@
 import './style.css';
 import image from './assets/logo.png';
+import { homePageGetObj } from './modules/loadHomePage';
 
 const header = document.querySelector('.header');
 
@@ -12,3 +13,4 @@ const loadHeader = () => {
 };
 
 header.appendChild(loadHeader());
+
