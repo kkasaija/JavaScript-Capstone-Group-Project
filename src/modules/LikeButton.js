@@ -5,7 +5,7 @@ const getLikes = async () => {
   const res = await response.json();
   if (response.ok) {
     return res;
-  };
+  }
   return 'empty';
 };
 
@@ -19,7 +19,7 @@ const postLikes = async (id) => {
   });
   if (response.ok) {
     return response;
-  };
+  }
   return 'empty';
 };
 
