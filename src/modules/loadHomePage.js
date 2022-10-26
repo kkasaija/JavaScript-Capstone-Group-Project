@@ -26,7 +26,7 @@ const displayList = async () => {
   });
 
   movie.forEach((item) => {
-    page.innerHTML 
+    page.innerHTML
     += `
     <div class='page-info'>
         <img class='page-img' src= ${item.movieDetail.image.original} alt='${item.movieDetail.name}' />
