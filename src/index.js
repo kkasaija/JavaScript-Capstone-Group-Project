@@ -1,5 +1,6 @@
 import './style.css';
 import image from './assets/logo.png';
+import displayList from './modules/loadHomePage.js';
 
 const header = document.querySelector('.header');
 
@@ -12,3 +13,7 @@ const loadHeader = () => {
 };
 
 header.appendChild(loadHeader());
+
+document.addEventListener('DOMContentLoaded', () => {
+  displayList();
+});

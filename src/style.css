@@ -16,21 +16,68 @@ body {
 }
 
 .header-img {
-  width: 20%;
-  height: 20%;
+  width: 7em;
+  height: 7em;
 }
 
 .header-title {
   font-size: 3em;
+  font-family: cursive;
+}
+
+.element-counter {
+  background-color: black;
+  color: white;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
 }
 
 .page {
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.page-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.page-img {
+  width: 200px;
+  height: 300px;
+}
+
+.page-name {
+  font-weight: bold;
+}
+
+.like-container {
+  display: flex;
   width: max-content;
-  height: max-content;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.like-label {
+  margin-right: 1em;
+}
+
+.span-like {
+  margin-right: 1em;
+}
+
+.comment-btn {
+  width: fit-content;
 }
 
 .footer {
-  margin-top: 2em;
+  margin-top: 1em;
   border-top: 3px solid black;
   padding: 1em;
   font-size: 1.2em;
