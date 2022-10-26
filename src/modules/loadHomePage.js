@@ -1,28 +1,56 @@
+import { postLikes, getLikes } from './LikeButton.js'
+
 const homePageGetObj = async () => {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
+  const response = await fetch('https://api.tvmaze.com/shows');
   const res = await response.json();
-  return res;
+  return res.slice(0, 10);
 };
-  const displayList = async () => {
-    const getPokemon = await homePageGetObj();
-    console.log('look here ',getPokemon);
-    const page = document.querySelector('.page');
-    let disp = '';
-    getPokemon.forEach((item) => {
-    disp += `
-    <div>
-      <img class='pageImg' src= ${item.url} alt='page image pokemon' />
-      <p class='pageName'> ${item.name} </p>
-      <div class='likeContainer'> 
-        likes <i class="fa-regular fa-heart"></i>
+
+const movieCount = (movies) =>  movies.length;
+
+const displayList = async () => {
+  const page = document.querySelector('.page');
+  const movies = await homePageGetObj();
+  const showLikes = await getLikes();
+  
+  const elCount = document.querySelector('.element-counter')
+  elCount.append(movieCount(movies))
+
+  const movie = movies.map((movieDetail) => {
+    const defaultResult = {movieDetail, item_id: movieDetail.id, likes: 0}
+    if(!showLikes)
+    {
+      return defaultResult;
+    }
+    let like = showLikes.find(like => movieDetail.id.toString() === like.item_id)
+    return {...defaultResult, ...like}
+  });
+
+  movie.forEach(item => {
+  page.innerHTML += 
+  `
+  <div class='page-info'>
+      <img class='page-img' src= ${item.movieDetail.image.original} alt='${item.movieDetail.name}' />
+      <p class='page-name'> ${item.movieDetail.name} </p>
+      <div class='like-container'> 
+        <label class='like-label'>Total likes: </label>
+        <span class='span-like' id='like-${item.item_id}'>${item.likes}</span>
+         <i class="fa-regular fa-heart" id=${item.movieDetail.id}></i>
       </div>
-      <button type='' class='commentBtn'> comment </button>
+      <button id=${item.movieDetail.id} class='comment-btn'> comment </button>
     </div>
-    `
-    page.innerHTML = disp;
+  `
+  });
+
+  const likeBtnAll = [...document.querySelectorAll('.fa-heart')]
+  likeBtnAll.map((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const likeDetail = document.getElementById(`like-${e.target.id}`);
+      postLikes(e.target.id);
+      likeDetail.innerHTML = parseInt(likeDetail.innerText) + 1;
     });
-  };
+  });
+};
 
-  window.onload = displayList();
-
-module.exports = { homePageGetObj };
+export { displayList };
