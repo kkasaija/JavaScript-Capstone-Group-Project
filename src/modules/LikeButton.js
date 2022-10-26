@@ -5,7 +5,8 @@ const getLikes = async () => {
   const res = await response.json();
   if (response.ok) {
     return res;
-  }
+  };
+  return 'empty';
 };
 
 const postLikes = async (id) => {
@@ -16,9 +17,10 @@ const postLikes = async (id) => {
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ item_id: id }),
   });
-  if(response.ok) {
+  if (response.ok) {
     return response;
-  }
+  };
+  return 'empty';
 };
 
 export { postLikes, getLikes };

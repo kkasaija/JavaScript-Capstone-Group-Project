@@ -6,7 +6,7 @@ const homePageGetObj = async () => {
   return res.slice(0, 10);
 };
 
-const movieCount = (count) =>  count.length;
+const movieCount = (count) => count.length;
 
 const displayList = async () => {
   const page = document.querySelector('.page');
@@ -26,7 +26,8 @@ const displayList = async () => {
   });
 
   movie.forEach((item) => {
-    page.innerHTML += 
+    page.innerHTML 
+    +=
     `
     <div class='page-info'>
         <img class='page-img' src= ${item.movieDetail.image.original} alt='${item.movieDetail.name}' />
@@ -38,7 +39,7 @@ const displayList = async () => {
         </div>
         <button id=${item.movieDetail.id} class='comment-btn'> comment </button>
       </div>
-    `
+    `;
   });
 
   const likeBtnAll = [...document.querySelectorAll('.fa-heart')];
@@ -47,7 +48,7 @@ const displayList = async () => {
       e.preventDefault();
       const likeDetail = document.getElementById(`like-${e.target.id}`);
       postLikes(e.target.id);
-      likeDetail.innerHTML = parseInt(likeDetail.innerText) + 1;
+      likeDetail.innerHTML = Number(likeDetail.innerText) + 1;
     });
   });
 };
