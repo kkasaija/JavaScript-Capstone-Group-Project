@@ -1,12 +1,12 @@
 
-const usedInPop = async (id) => {
-  const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
+const usedInPop = async () => {
+  const response = await fetch('https://api.tvmaze.com/shows/');
   const res = await response.json();
   return res;
 };
 
 const modalDisplay = async (id, popupInfo, commentList) => {
-  const movies = await usedInPop(id);
+  const movies = await usedInPop();
   console.log(movies);
   movies.forEach((element) => {
     const modal = document.querySelector('.modal-wrapper');
