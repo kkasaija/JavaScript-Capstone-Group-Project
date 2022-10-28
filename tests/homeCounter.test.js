@@ -1,7 +1,6 @@
 import movieCount from '../src/modules/homeCounter.js';
 
 describe('movie counter function', () => {
-
   test('testing 0 home elements', () => {
     const arr = [];
     expect(movieCount(arr)).toBe(0);
