@@ -1,33 +1,20 @@
-const username = document.querySelector('#commenter');
-const comment = document.querySelector('#comment');
-
-const submitForm = async () => {
-  const info = {
-    item_id,
-    username: username.value,
-    comment: comment.value,
-  };
-
-  const dataFormart = {
+const submitForm = async (username, comment) => {
+  const uniqueID = 'dfZcl4Ir8rwlXsCGWsj9';
+  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+  const response = await fetch(`${baseUrl}${uniqueID}/comments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(info),
-  };
-
-  const uniqueID = 'EqDeGxmunpJBGBpVzDss';
-  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
-  const response =await fetch(`${baseUrl}${uniqueID}/comments`, dataFormart);
-  const data = await response.json();
-  username.value = '';
-  comment.value = '';
-  console.log(value);
-  return data;
+    body: JSON.stringify({
+      username: username.value,
+      comment: comment.value
+    }),
+  });
+  if (response.ok) {
+    return response;
+  }
+  return 'empty';
 };
 
-const commentForm = document.querySelector('.comment-form');
-commentForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  submitForm();
-});
+export default submitForm;
