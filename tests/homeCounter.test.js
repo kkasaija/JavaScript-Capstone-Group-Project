@@ -1,17 +1,14 @@
 import movieCount from '../src/modules/homeCounter.js';
 
-describe('homeCounter function', () => {
+describe('movie counter function', () => {
 
   test('testing 0 home elements', () => {
-    const div = document.createElement('div');
-    expect(movieCount(div)).toBe(0);
+    const arr = [];
+    expect(movieCount(arr)).toBe(0);
   });
 
   test('testing  2 home elements', () => {
-    const div = document.createElement('div');
-    const span = document.createElement('span');
-    const span2 = document.createElement('span');
-    div.append(span, span2);
-    expect(movieCount(div)).toBe(2);
+    const arr = [1, 2, 3, 4, 6, 7, 8, 9, 10];
+    expect(movieCount(arr)).toBe(10);
   });
 });
