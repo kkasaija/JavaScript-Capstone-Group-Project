@@ -1,3 +1,3 @@
-const commentCount = (count) => count.length
+const commentCount = (count) => count.length;
 
 export default commentCount;

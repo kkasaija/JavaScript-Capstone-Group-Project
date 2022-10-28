@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 import { homePageGetObj } from './loadHomePage.js';
-import { getComments } from './getComment.js';
+import getComments from './getComment.js';
 import submitForm from './postComment.js';
 import commentCount from './commentCounter.js';
 
@@ -11,8 +12,8 @@ const modalDisplay = async (id) => {
     modal.style.display = 'flex';
     document.querySelector('.page').style.filter = 'blur(100px)';
     document.querySelector('.element-counter').style.filter = 'blur(100px)';
-    
-    if (id.toString() == element.id.toString()) {
+
+    if (id.toString() === element.id.toString()) {
       modal.innerHTML = `
       <div class='modal' id='${id}'>
         <div class='img-div'>
@@ -36,23 +37,25 @@ const modalDisplay = async (id) => {
         </div>
         <ul class='comment-list'></ul>
       </div>`;
-    };
+    }
   });
-  
+
   const close = [...document.querySelectorAll('.fa-xmark')];
   close.forEach((el) => {
     el.addEventListener('click', () => {
       document.querySelector('.modal-wrapper').style.display = 'none';
       document.querySelector('.page').style.filter = 'blur(0px)';
-      document.querySelector('.element-counter').style.filter = 'blur(0px)'; 
+      document.querySelector('.element-counter').style.filter = 'blur(0px)';
     });
   });
 
-  const displayComments = showComments.forEach((i) => {
-    const commentList = document.querySelector('.comment-list');
-    commentList.innerHTML += `<li class='list-com'> Name: ${i.username} <br> Comment: ${i.comment} <br> Date: ${i.creation_date} </li>`;
-  });
-  displayComments;
+  const displayComments = () => {
+    showComments.forEach((i) => {
+      const commentList = document.querySelector('.comment-list');
+      commentList.innerHTML += `<li class='list-com'> Name: ${i.username} <br> Comment: ${i.comment} <br> Date: ${i.creation_date} </li>`;
+    });
+  };
+  displayComments();
 
   const form = document.querySelector('.form');
   form.addEventListener('submit', (e) => {
@@ -71,4 +74,4 @@ const modalDisplay = async (id) => {
   });
 };
 
-export { modalDisplay };
+export default modalDisplay;

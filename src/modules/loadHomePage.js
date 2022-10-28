@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 import { postLikes, getLikes } from './LikeButton.js';
-import { modalDisplay } from './popup.js';
+import modalDisplay from './popup.js';
 import movieCount from './homeCounter.js';
 
 const homePageGetObj = async () => {
@@ -22,7 +23,6 @@ const displayList = async () => {
       return defaultResult;
     }
     const like = showLikes.find((like) => movieDetail.id.toString() === like.item_id);
-  
     return { ...defaultResult, ...like };
   });
 

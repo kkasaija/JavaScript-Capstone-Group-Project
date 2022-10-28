@@ -9,7 +9,7 @@ const submitForm = async (user, com, id) => {
     body: JSON.stringify({
       item_id: id,
       username: user,
-      comment: com
+      comment: com,
     }),
   });
   if (response.ok) {
