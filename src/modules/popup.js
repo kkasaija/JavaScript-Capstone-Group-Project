@@ -52,7 +52,14 @@ const modalDisplay = async (id) => {
     const username = document.getElementById('commenter').value;
     const comment = document.getElementById('comment').value;
     submitForm(username, comment, id);
-    displayComments;
+    const commentList = document.querySelector('.comment-list');
+    const date = new Date();
+    const day = date.getDay();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    commentList.innerHTML += `<li class='listCom'> Name: ${username} <br> Comment: ${comment} <br> Date: ${year}-${month}-${day} </li>`;
+    document.querySelector('input').value = '';
+    document.querySelector('textarea').value = '';
   });
 };
 
