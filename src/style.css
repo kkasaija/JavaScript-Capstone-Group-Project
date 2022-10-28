@@ -117,7 +117,7 @@ body {
 .img-div {
   flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .movie-title {
@@ -128,6 +128,7 @@ body {
 
 .movie-title h3 p {
   margin: 0;
+  font-size: 3em;
 }
 
 .comments-div {
@@ -138,14 +139,52 @@ body {
 
 .comment-list {
   list-style: none;
+  padding: 0;
+}
+
+.list-com {
+  margin-top: 10px;
+  border: 2px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
 
 .img {
-  width: 200px;
-  height: 300px;
+  width: 300px;
+  height: 400px;
+}
+
+#submit {
+  width: fit-content;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#submit:hover {
+  background-color: black;
+  color: whitesmoke;
+}
+
+#commenter {
+  border-radius: 5px;
+  width: 40%;
+}
+
+#comment {
+  border-radius: 5px;
+  width: 40%;
+}
+
+.fa-xmark {
+  font-size: 50px;
+  position: relative;
+  left: 30%;
+  padding: 0;
 }

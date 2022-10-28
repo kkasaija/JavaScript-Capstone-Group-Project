@@ -1,11 +1,9 @@
 import { homePageGetObj } from './loadHomePage.js';
 import { getComments } from './getComment.js';
 import submitForm from './postComment.js';
-
-const commentCount = (count) => count.length
+import commentCount from './commentCounter.js';
 
 const modalDisplay = async (id) => {
-  console.log('id ',id)
   const movies = await homePageGetObj();
   const showComments = await getComments(id);
   movies.forEach((element) => {
@@ -23,8 +21,8 @@ const modalDisplay = async (id) => {
         </div>
 
         <div class='movie-title'>
-        <h3>movie title</h3>
-        <p>Other details</p>
+        <h3>Movie title: ${element.name}</h3>
+        <p>Movie details: ${element.summary}</p>
         </div>
 
         <div class='comments-div'>
@@ -40,9 +38,19 @@ const modalDisplay = async (id) => {
       </div>`;
     };
   });
+  
+  const close = [...document.querySelectorAll('.fa-xmark')];
+  close.forEach((el) => {
+    el.addEventListener('click', () => {
+      document.querySelector('.modal-wrapper').style.display = 'none';
+      document.querySelector('.page').style.filter = 'blur(0px)';
+      document.querySelector('.element-counter').style.filter = 'blur(0px)'; 
+    });
+  });
+
   const displayComments = showComments.forEach((i) => {
     const commentList = document.querySelector('.comment-list');
-    commentList.innerHTML += `<li class='listCom'> Name: ${i.username} <br> Comment: ${i.comment} <br> Date: ${i.creation_date} </li>`;
+    commentList.innerHTML += `<li class='list-com'> Name: ${i.username} <br> Comment: ${i.comment} <br> Date: ${i.creation_date} </li>`;
   });
   displayComments;
 

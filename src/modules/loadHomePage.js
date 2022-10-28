@@ -1,13 +1,12 @@
 import { postLikes, getLikes } from './LikeButton.js';
 import { modalDisplay } from './popup.js';
+import movieCount from './homeCounter.js';
 
 const homePageGetObj = async () => {
   const response = await fetch('https://api.tvmaze.com/shows');
   const res = await response.json();
   return res.slice(0, 10);
 };
-
-const movieCount = (count) => count.length;
 
 const displayList = async () => {
   const page = document.querySelector('.page');
