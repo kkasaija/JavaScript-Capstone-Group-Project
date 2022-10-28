@@ -1,4 +1,4 @@
-const submitForm = async (username, comment) => {
+const submitForm = async (user, com, id) => {
   const uniqueID = 'dfZcl4Ir8rwlXsCGWsj9';
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const response = await fetch(`${baseUrl}${uniqueID}/comments`, {
@@ -7,8 +7,9 @@ const submitForm = async (username, comment) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: username.value,
-      comment: comment.value
+      item_id: id,
+      username: user,
+      comment: com
     }),
   });
   if (response.ok) {

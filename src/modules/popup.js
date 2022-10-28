@@ -42,7 +42,7 @@ const modalDisplay = async (id) => {
   });
   const displayComments = showComments.forEach((i) => {
     const commentList = document.querySelector('.comment-list');
-    commentList.innerHTML += `<li class='listCom'> ${i.username}: <br> ${i.comment} <br> :${i.creation_date} </li>`;
+    commentList.innerHTML += `<li class='listCom'> Name: ${i.username} <br> Comment: ${i.comment} <br> Date: ${i.creation_date} </li>`;
   });
   displayComments;
 
@@ -51,7 +51,8 @@ const modalDisplay = async (id) => {
     e.preventDefault();
     const username = document.getElementById('commenter').value;
     const comment = document.getElementById('comment').value;
-    submitForm(username, comment);
+    submitForm(username, comment, id);
+    displayComments;
   });
 };
 
