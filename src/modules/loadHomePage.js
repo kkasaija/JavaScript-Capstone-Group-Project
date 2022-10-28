@@ -1,12 +1,13 @@
+/* eslint-disable import/no-cycle */
 import { postLikes, getLikes } from './LikeButton.js';
+import modalDisplay from './popup.js';
+import movieCount from './homeCounter.js';
 
 const homePageGetObj = async () => {
   const response = await fetch('https://api.tvmaze.com/shows');
   const res = await response.json();
   return res.slice(0, 10);
 };
-
-const movieCount = (count) => count.length;
 
 const displayList = async () => {
   const page = document.querySelector('.page');
@@ -36,7 +37,7 @@ const displayList = async () => {
           <span class='span-like' id='like-${item.item_id}'>${item.likes}</span>
             <i class="fa-regular fa-heart" id=${item.movieDetail.id}></i>
         </div>
-        <button id=${item.movieDetail.id} class='comment-btn'> comment </button>
+        <button id='${item.movieDetail.id}' class='comment-btn'> comment </button>
       </div>
     `;
   });
@@ -50,6 +51,14 @@ const displayList = async () => {
       likeDetail.innerHTML = Number(likeDetail.innerText) + 1;
     });
   });
+
+  const commentBtnAll = [...document.querySelectorAll('.comment-btn')];
+  commentBtnAll.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalDisplay(e.target.id);
+    });
+  });
 };
 
-export default displayList;
+export { displayList, homePageGetObj };

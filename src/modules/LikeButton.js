@@ -1,5 +1,5 @@
 const getLikes = async () => {
-  const uniqueID = 'dfZcl4Ir8rwlXsCGWsj9';
+  const uniqueID = 'koWShQRS6nOY80YNyou5';
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const response = await fetch(`${baseUrl}${uniqueID}/likes/`);
   const res = await response.json();
@@ -10,7 +10,7 @@ const getLikes = async () => {
 };
 
 const postLikes = async (id) => {
-  const uniqueID = 'dfZcl4Ir8rwlXsCGWsj9';
+  const uniqueID = 'koWShQRS6nOY80YNyou5';
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const response = await fetch(`${baseUrl}${uniqueID}/likes/`, {
     method: 'POST',
